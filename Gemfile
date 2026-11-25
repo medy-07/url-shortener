@@ -46,8 +46,11 @@ group :development, :test do
   gem "rubocop-rails-omakase", require: false
 end
 
-gem "rspec-rails", "~> 8.1", groups: [:development, :test]
-gem "factory_bot_rails", "~> 6.5", groups: [:development, :test]
-gem "shoulda-matchers", "~> 7.0", groups: [:development, :test]
+gem "rspec-rails", "~> 8.1", groups: [ :development, :test ]
+gem "factory_bot_rails", "~> 6.5", groups: [ :development, :test ]
+gem "shoulda-matchers", "~> 7.0", groups: [ :development, :test ]
 
 gem "redis", "~> 6.1"
+
+# ActiveSupport 8.0 passes `quirks_mode:` to JSON.generate/parse, which json 3.x rejects.
+gem "json", "~> 2.19"

@@ -67,6 +67,12 @@ RSpec.configure do |config|
 
   # Filter lines from Rails gems in backtraces.
   config.filter_rails_from_backtrace!
+
+  config.include FactoryBot::Syntax::Methods
+
+  # Each example rolls back the id_counters row, so drop any id block cached in
+  # memory to keep allocated ids in step with the database.
+  config.before { Shortener::IdAllocator.reset! }
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 end
